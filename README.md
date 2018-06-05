@@ -1,26 +1,54 @@
-box.states = 
-	one:
-		borderRadius: 14
-		rotation: 15
-		scale: 1.5
-		backgroundColor: "rgba(255,255,255,1)"
-		
-	two:
-		scale:.75
-		rotation: -15
-		x: 86
-		y: 143
-		width: 203
-		height: 203
-		backgroundColor: "rgba(255,185,0,1)"
-		
-	three:
-		rotation: 0
-		scale: 1
-		backgroundColor: "rgba(255,255,255,1)"
-		
-box.animationOptions =
-	curve: Spring(damping: 0.5)
+button1.states.a =
+	options:
+		time: 1
+		curve: Spring(tension: 200,friction: 25)
+	
+	x: 304
+	scale: 1.2
+	
+bj.states.a =
+	backgroundColor: "rgba(84,161,253,1)"
+	
+button1.states.animationOptions = 
+	curve: Spring(tension: 200,friction: 25)
+	time: 1
+	
+bj.states.animationOptions = 
+	curve: Spring(tension: 200,friction: 25)
+	time: 1
+	
+button1.onClick ->
+	button1.stateCycle()
+	bj.stateCycle()
+bj.onClick ->
+	button1.stateCycle()
+	bj.stateCycle()	
+```
+- #####气泡
 
-box.onTap ->
-	box.stateCycle("one","two","three")
+![演示图.gif](https://upload-images.jianshu.io/upload_images/2666102-90a5ee7a4d4f7cbf.gif?imageMogr2/auto-orient/strip)
+
+```
+
+layerA.states.rotate =
+	rotation: 180
+	animationOptions:
+		time: 1
+		curve: Spring
+		
+ 
+layer2.states.csale =
+	scale: 0
+	y: -74
+	x: 257
+	opacity: 0.00
+
+layer2.states.animationOptions = 
+	curve: Spring
+
+layerA.states.animationOptions = 
+	curve: Spring	
+		
+layerA.onTap ->
+	layerA.stateCycle()
+	layer2.stateCycle()
